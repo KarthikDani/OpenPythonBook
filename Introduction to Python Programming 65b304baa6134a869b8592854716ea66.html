@@ -1,0 +1,917 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Introduction to Python Programming</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="65b304ba-a613-4a86-9b85-92854716ea66" class="page mono"><header><div class="page-header-icon undefined"><img class="icon" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/bmsce_logo.svg"/></div><h1 class="page-title">Introduction to Python Programming</h1><p class="page-description"></p></header><div class="page-body"><p id="2810872b-0321-438f-a837-eae8ff5d8efd" class="">“””</p><p id="eda55d7a-4a4e-4556-bbf3-5c9d1fbae351" class=""><strong>The nice part of making mistakes is that they are almost always an opportunity to learn something. An error in the code is hidden knowledge, it is some piece of insight that we are yet to unmask.</strong></p><p id="75f52c83-d0cb-438e-abfe-237f653e8577" class="">”””</p><blockquote id="ff64b139-a5ef-4897-804a-be50364cb3b5" class="">This resource is purely designed to help students complement academically. ~ <strong>Made with ❤️ by </strong><strong><a href="https://www.linkedin.com/in/karthik-dani-95801616b/">Karthik Dani</a></strong></blockquote><hr id="5ac8a52d-320c-4a72-847c-a5bc2ead2700"/><h2 id="267cc79f-3fd5-46b3-b977-d977ce20f1d8" class="">Contents at a glance:</h2><nav id="ba0e6c36-bf97-45cd-b045-fb58f8c02570" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#267cc79f-3fd5-46b3-b977-d977ce20f1d8">Contents at a glance:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9794d251-a6f8-4e46-b9e2-47f65a392f67">Unit 1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#41cc5087-0cae-40a1-9a70-7bef5ab436ff">Operators</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#66f0cafa-7b3f-4876-8c82-c431a8a37fb0">Arithmetic Operators:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a07bb9db-aa4e-41c3-a812-18befb5f40d3">Logical Operators:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#01a62925-f9ea-4da5-9886-0d32b7cb3eea">Relational Operators:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b60eae1b-a404-47a9-826a-e83c50649ec4">Operator Precedence (High to Low):</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8c93fc3c-7d99-44c5-95e8-a560d4f61a72">Logical Operators Precedence:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f3f80a1f-ea9f-4a52-a055-323dc150c99c">Beware of <code>float</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#413610a9-f807-4936-ba9a-6d2803e200b3">Short Circuit evaluation in Python:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b6c0e06b-33cd-42e6-9081-df1d5cfbf72f">Strings</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4f91fbb9-323b-40d7-bdd6-4b645f3c56cb"><code>&#x27;&#x27;&#x27; &#x27;&#x27;&#x27;</code></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#27a8b8e2-8a7c-4bc9-8a6e-fefb4a55b6dd"><code>len()</code></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a3f384d6-1057-42a5-9412-1093a16bba6f">Operations on strings:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8d35bc06-2327-498a-842e-62ca39b44565"><code>ord()</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1d1eba15-4522-4d98-990f-11fa540861a1">Escape character <code>\</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e05fcce3-b6cc-4ca4-ae22-20ae84db18d3">Indexing:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ef31b9ce-2721-4334-8de2-08d29dd84416">Slicing:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#639b9727-d805-47db-8d75-95ff6657d82b">Immutability in Strings:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cd21965e-4b53-410c-ab4d-853247bf9cd3">Unit 2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b534f476-8610-406e-b003-478978c0dcdb">Loops</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#349afbee-92f9-4748-9463-f081acacf842"><code>while</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6ffa668a-6464-4a0e-80b7-3246179520b0">loop keywords</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#99cfa6a8-badc-43bf-88fb-5f844f2fe969"><code>while</code> vs <code>for</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#46136a89-2038-4ca9-8ab0-be8201e3005b"><code>print()</code>: <code>end</code>, <code>sep</code></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#9c904c4d-dbfd-4c56-b0f2-0cae631042dc"><code>f</code> string:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#53d47f8a-d0b3-4ccf-9df9-4bfaf05b001f"><code>format()</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#02d6ada5-4f86-4231-830a-3331c82f8f2d">format specifiers:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#aa5df218-e736-4031-a831-96180abe1780">Unit 3</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e3a8cfb8-a599-4ed5-9f29-90a6381a362c">Functions</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f954ce05-379a-4fd2-91bb-8f690bc85b2b">How does Python interpreter work?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#671a113d-8bc4-4f9f-ad3d-3938f496a8b5">DocStrings:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#616b59c5-938c-43ed-a25d-c2f792273f46">Default arguments:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#aff9bf82-829b-4c6e-adfc-9adb8ab43dc1">Call by value:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#10d8812e-ac26-473c-93e2-1886b1ab80d6">Recursion:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2010d830-fabd-4fd3-b20e-16c5ac00d951">Lists</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0ff46c68-15ee-4c03-8f45-03ffa3cd0f3a">Concept of <code>alias</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#077469a4-c309-4d5d-9934-b7f61f774548"><code>is</code> keyword:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#91db7d20-d1ce-4a94-8254-d8ae23a3ce98">How to do <code>anti-aliasing</code>?</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f28e6a8f-1942-4970-991e-76cd15ea4efb">Shallow copy and Deep copy for <code>anti-aliasing</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#118d5761-b9a2-4fe5-8480-6e6e92304f91"><code>insert(#index, #value)</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e37c60d4-2ea1-4a93-9b17-6b669c2233fa"><code>pop(#index)</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#255f8e40-0528-47cf-87cb-fad96338cfa5"><code>reverse()</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3161495e-068f-455d-9d6d-978fd3ddb0d3"><code>sort()</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cb5ea936-ca80-4eea-bfbb-8525d5a760c3"><code>remove(#value)</code></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3b344784-ae91-442e-b0b7-690ec62607e9"><code>split(#delimiter)</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#de8092f4-da21-416a-8e44-972895a6f4ed"><code>join()</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6ccb220e-1e8c-4456-9a09-19497b57a532">Tuples</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#754bf6e3-2616-4ced-b5a2-69774e00083c">Mutable objects inside tuples</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c61289ca-b8cb-42bd-af6a-3955c72a22fc">Lists and Tuples:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d3e3cca5-3a8a-45a7-9e24-3b0890360032">Packing and Unpacking of Tuples:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#09c4ed0e-42f1-4027-b98c-ba3fcdc56453">Dictionaries</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#89f49cf8-3dcc-49f0-a569-0f0e9ff16275">Iterating over a dictionary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bdcc99bf-ca8c-46cb-ba9c-b957aac4dc5f">Sets</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6f3744d5-8631-4132-a83c-914cc2e64263"><code>add()</code></a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6742190c-fbad-4792-b0eb-d38702a577e0">Subset:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#86224665-b13d-4721-a552-34d0c62c6d48">Superset:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c53f2a65-153a-433b-aca6-b8f896d6d4c5">Union:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e162bda5-164c-4b38-ae45-aebe84113401">Intersection:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#44afcd8c-edfa-478e-8658-c441a2ca626f">Difference:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#5deb9f8d-90ea-4e4d-912e-25e423758de0"><code>remove(#value)</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fe8810cf-f41c-469d-ba0e-b8d0e52d2862">Unit 4</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#50018794-48f6-4db6-b3e5-bb24659735fc">File Handling:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a46641d4-f1fa-49d9-8b05-b25c8463a358">Object Oriented Programming:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#581ac20d-45f0-40f0-bf38-6cb3f0f5601a">What is <code>self</code>?</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a2db4ca4-c5a5-442c-be60-702b913db40a">Inheritance</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2745fc00-b612-4cd7-92f9-3cb61613a2b8">Method Overriding:</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#dbdf394f-ec61-4073-be58-dd4634eba192">Unit 5</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6153bf91-d0a9-4ac4-9c0c-a28730ba6a59">Regular expressions:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4c7fd13b-d15a-45d1-87d4-9e937ce6ede7"><code>re.compile()</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4af7c836-8620-4f2a-ae3e-e5b99885ab55"><code>span()</code>:</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f009853a-e5b7-4ad8-8a76-5e53c1282b58">Modifier flags:</a></div></nav><hr id="5e6fa6de-6636-4741-99b7-56be9e6c4a89"/><h1 id="9794d251-a6f8-4e46-b9e2-47f65a392f67" class="">Unit 1</h1><h2 id="41cc5087-0cae-40a1-9a70-7bef5ab436ff" class="">Operators</h2><h3 id="66f0cafa-7b3f-4876-8c82-c431a8a37fb0" class="">Arithmetic Operators:</h3><table id="8aebce0e-e936-433e-be6f-1bfda3396cfb" class="simple-table"><thead class="simple-table-header"><tr id="3788869e-4a83-40de-82b9-dabc2c682733"><th id="p]~:" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Operator</strong></th><th id="lhoV" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Operation</strong></th></tr></thead><tbody><tr id="7adea3bb-1373-415e-8535-a21cf0b21262"><td id="p]~:" class="" style="width:349px">+</td><td id="lhoV" class="" style="width:349px">Addition</td></tr><tr id="24cf4ad4-fb8d-4962-a4d9-7c15cf265e46"><td id="p]~:" class="" style="width:349px">-</td><td id="lhoV" class="" style="width:349px">Subtraction</td></tr><tr id="6928cf83-8869-4b04-9a74-af30284cbd4a"><td id="p]~:" class="" style="width:349px">*</td><td id="lhoV" class="" style="width:349px">Multiplication</td></tr><tr id="90740013-c001-4071-84e9-61b685464701"><td id="p]~:" class="" style="width:349px">/</td><td id="lhoV" class="" style="width:349px">Division (Gives complete division)</td></tr><tr id="c2b24c19-7fc1-4e78-acfd-c308218468a9"><td id="p]~:" class="" style="width:349px">//</td><td id="lhoV" class="" style="width:349px">Floor division (Gives integer quotient)</td></tr><tr id="7f784878-aa0e-4406-80da-11f96f46b45b"><td id="p]~:" class="" style="width:349px">%</td><td id="lhoV" class="" style="width:349px">Modulus (Gives remainder)</td></tr><tr id="fb782d11-3fae-4f1c-8f63-cd321bf670be"><td id="p]~:" class="" style="width:349px">**</td><td id="lhoV" class="" style="width:349px">Exponentiation</td></tr></tbody></table><pre id="097b5145-5d20-4304-94a0-05c9a2e5eddb" class="code"><code>&gt;&gt;&gt; 1 - 1    # subtraction operation
+0
+
+&gt;&gt;&gt; -1       # unary operation
+-1
+
+&gt;&gt;&gt; 1 - - 1  # subtraction on left, unary on right
+2</code></pre><h3 id="a07bb9db-aa4e-41c3-a812-18befb5f40d3" class="">Logical Operators:</h3><table id="b5105398-ee1c-4825-b30f-057d08c05a4d" class="simple-table"><thead class="simple-table-header"><tr id="29f1ab88-bbce-4aec-a8ae-b363f2eab4f4"><th id="i?HM" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Operator</strong></th><th id="&gt;EuS" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Operation</strong></th></tr></thead><tbody><tr id="93037894-a265-4d08-b2c9-9250fdd96ef0"><td id="i?HM" class="" style="width:349px">not</td><td id="&gt;EuS" class="" style="width:349px">negation</td></tr><tr id="6d00c46d-dff3-4bbd-9bc3-4eb6c0500c98"><td id="i?HM" class="" style="width:349px">and</td><td id="&gt;EuS" class="" style="width:349px">logical conjunction</td></tr><tr id="9a1c13d9-ea0f-4f65-8dcb-b841a38b287a"><td id="i?HM" class="" style="width:349px">or</td><td id="&gt;EuS" class="" style="width:349px">logical disjunction</td></tr></tbody></table><h3 id="01a62925-f9ea-4da5-9886-0d32b7cb3eea" class="">Relational Operators:</h3><table id="d516ecc3-5cb2-4d08-8327-464a4cbb9700" class="simple-table"><thead class="simple-table-header"><tr id="c1a30464-91b7-43d5-88b7-3f7d23f4a711"><th id="e;{q" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Operator</strong></th><th id="LKcT" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Operation</strong></th></tr></thead><tbody><tr id="6d693407-85ea-4f89-8424-f4dafceb6c98"><td id="e;{q" class="" style="width:349px">&gt;</td><td id="LKcT" class="" style="width:349px">greater than</td></tr><tr id="f598e2a4-4a54-454f-84e4-be573a2e3e3f"><td id="e;{q" class="" style="width:349px">&lt;</td><td id="LKcT" class="" style="width:349px">less than</td></tr><tr id="3c318f52-38b7-43e4-bf03-4008c3b1983d"><td id="e;{q" class="" style="width:349px">&gt;=</td><td id="LKcT" class="" style="width:349px">greater than or equal to</td></tr><tr id="8efd0a16-5223-495c-ab75-dc5f14a1d215"><td id="e;{q" class="" style="width:349px">&lt;=</td><td id="LKcT" class="" style="width:349px">less than or equal to</td></tr><tr id="80431238-f10c-418b-bba2-8d530bec214e"><td id="e;{q" class="" style="width:349px">==</td><td id="LKcT" class="" style="width:349px">double equal to</td></tr><tr id="5f1ffaab-093a-4335-ac4a-199c5455993a"><td id="e;{q" class="" style="width:349px">!=</td><td id="LKcT" class="" style="width:349px">not equal to</td></tr></tbody></table><h3 id="b60eae1b-a404-47a9-826a-e83c50649ec4" class="">Operator Precedence (High to Low):</h3><ul id="1b726357-a640-4e2b-a41f-0184c527bb3e" class="bulleted-list"><li style="list-style-type:disc">The operators in the same row below have same precedence.</li></ul><ul id="68b30423-cced-4105-b443-0b02c1e35950" class="bulleted-list"><li style="list-style-type:disc">Python evaluates expression from left to right when it comes across same precedence operators.</li></ul><table id="40385351-efaa-4bde-bb17-6dda9a0d7ba9" class="simple-table"><thead class="simple-table-header"><tr id="dfbb4962-9b1a-4706-af79-c3ac49069749"><th id="dUp[" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Operators</strong></th><th id="jDn;" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Operation</strong></th></tr></thead><tbody><tr id="cbb21e03-20ac-4fff-bbf2-18764c25d503"><td id="dUp[" class="" style="width:349px"><code>**</code></td><td id="jDn;" class="" style="width:349px">Exponentiation</td></tr><tr id="1bd23901-0efc-4489-96b6-f2ddb06f6d7e"><td id="dUp[" class="" style="width:349px"><code>+</code><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span></span><span>﻿</span></span>, <code>-</code><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span></span><span>﻿</span></span></td><td id="jDn;" class="" style="width:349px">Unary + (positive sign)         Unary - (negative sign)</td></tr><tr id="2ad88697-76c2-4e71-ad74-da0717fcf415"><td id="dUp[" class="" style="width:349px"><code>*</code>  <code>/</code>  <code>//</code>  <code>%</code></td><td id="jDn;" class="" style="width:349px">multiplication, division, floor division, modulus</td></tr><tr id="162e8eed-37f6-4ff8-84df-019408f40a17"><td id="dUp[" class="" style="width:349px"><code>+</code>  <code>-</code></td><td id="jDn;" class="" style="width:349px">addition, subraction</td></tr></tbody></table><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d6a8b782-d457-4162-8e6f-563433c888dd"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Exception: </strong><code><strong>**</strong></code><strong> </strong>and<strong> </strong><code><strong>=</strong></code><strong> </strong>are evaluated from right to left</div></figure><p id="c167dec0-bfc7-48b1-bd12-0559f96f8371" class=""><code>2 ** 3 ** 0</code> evaluates to → 2</p><h3 id="8c93fc3c-7d99-44c5-95e8-a560d4f61a72" class="">Logical Operators Precedence:</h3><table id="ff94baae-05d8-4463-88dc-09c777649df8" class="simple-table"><thead class="simple-table-header"><tr id="306fd29a-2df0-4ca3-8ebd-699cf31bea50"><th id="KMNA" class="simple-table-header-color simple-table-header" style="width:125px"><strong>Operators</strong></th></tr></thead><tbody><tr id="d16e80a9-c97b-4970-9d9b-d00ddb5cb4fd"><td id="KMNA" class="" style="width:125px">not</td></tr><tr id="9e3e026e-c453-4ff8-8849-016bb3f2aee9"><td id="KMNA" class="" style="width:125px">and </td></tr><tr id="3e1517ee-f124-4639-8a79-9724e8fb3724"><td id="KMNA" class="" style="width:125px">or</td></tr></tbody></table><h3 id="f3f80a1f-ea9f-4a52-a055-323dc150c99c" class="">Beware of <code>float</code>:</h3><pre id="94b166c5-4940-4615-812e-270d576402d5" class="code"><code>&gt;&gt;&gt; 10.00000000000000000000001 &gt; 10
+False
+
+&gt;&gt;&gt; 0.1 ** 100 == 0.0
+False
+
+&gt;&gt;&gt; 0.1 ** 1000 == 0.0
+True</code></pre><h3 id="413610a9-f807-4936-ba9a-6d2803e200b3" class="">Short Circuit evaluation in Python:</h3><p id="515113e0-3183-4c07-9925-f2ee51a7fb5f" class="">1/0 must throw error right as it is not defined? Yes. It does.</p><p id="56cc3e39-e4bf-48a6-a1bb-8ca5931b7f4e" class="">⇒ However, consider the following surprising expression and it’s evaluation by Python Interpreter</p><pre id="d4c3a341-54c6-4a99-a46b-e4d0f50d8fb5" class="code"><code>&gt;&gt;&gt; True or (1 / 0)
+True</code></pre><ul id="20c29064-2194-4ec7-9013-9accbd9c1353" class="bulleted-list"><li style="list-style-type:disc">Try a complicated example like this:</li></ul><pre id="758c19b3-0205-43a8-a334-256a1e120740" class="code"><code>&gt;&gt;&gt; (not((3 &gt; 2) or (5 / 0))) and (10 / 0)
+False</code></pre><figure id="d389d5f5-7433-4a48-b0c8-cc0847159743" class="image"><a href="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled.png"><img style="width:2366px" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled.png"/></a></figure><h2 id="b6c0e06b-33cd-42e6-9081-df1d5cfbf72f" class="">Strings</h2><h3 id="4f91fbb9-323b-40d7-bdd6-4b645f3c56cb" class=""><code>&#x27;&#x27;&#x27; &#x27;&#x27;&#x27;</code></h3><p id="ac652415-24ea-41f5-95a6-cf3449be1c13" class="">Multiline string can be put inside <code>‘’’ ‘’’</code> triple quotes as using <code>‘ ’</code> single quotes for multiline gives you errors.</p><pre id="88b85a54-d217-48f1-addb-05aeac0c7c21" class="code"><code>x = &#x27;&#x27;&#x27;first line
+second line
+third line&#x27;&#x27;&#x27;
+
+print(x)
+
+# Outputs
+&#x27;first line\nsecond line\nthird line&#x27;</code></pre><h3 id="27a8b8e2-8a7c-4bc9-8a6e-fefb4a55b6dd" class=""><code>len()</code></h3><p id="cd669d0e-83fc-4b9f-b0f0-f9f8ea2ba7b2" class="">
+</p><pre id="bd669f1c-d7c7-4ac4-9384-61c2f552bc7d" class="code"><code>x = &#x27;&#x27;
+print(len(x))
+
+# Outputs
+0</code></pre><pre id="a9092ec9-c753-4c2e-8983-c66b0967da20" class="code"><code>x = &#x27; &#x27;
+print(len(x))
+
+# Outputs
+1</code></pre><h3 id="a3f384d6-1057-42a5-9412-1093a16bba6f" class="">Operations on strings:</h3><ul id="65458541-4ee8-4e05-9e2b-e96a98cc7e32" class="bulleted-list"><li style="list-style-type:disc"><strong>Concatenation</strong> → joins two strings, <code>+</code> is used.</li></ul><ul id="5f9098eb-eca1-4583-82b0-67ae9a7c867d" class="bulleted-list"><li style="list-style-type:disc"><strong>Replication</strong> → Makes multiple copies of a string using <code>*</code></li></ul><ul id="7dcea086-869d-4472-acc8-238920e23730" class="bulleted-list"><li style="list-style-type:disc"><strong>Comparison</strong> → Python follows <code>lexicographic</code> ordering</li></ul><blockquote id="b1706fe0-1228-4429-b7b4-f18cc0052ff2" class=""><strong>Lexicographic ordering: </strong>The first characters from the two strings are compared. If they differ this determines the outcome of the comparison. If they are equal, then the second character of both the strings are compared. This process continues until either string is exhausted.</blockquote><h3 id="8d35bc06-2327-498a-842e-62ca39b44565" class=""><code>ord()</code>:</h3><p id="96d90fff-51e1-4a68-923c-d12ab4195fe7" class="">This builtin function provides code point of any given character.</p><pre id="673bf371-2304-4771-af2a-c41ba53a188a" class="code"><code>print(ord(&#x27;a&#x27;), ord(&#x27;b&#x27;))
+
+# Outputs:
+97, 98</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="cd2c6fc8-bbd5-4cd2-82eb-4892877a2abf"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Lexicographical ordering for strings uses the Unicode code point number to order individual characters.</div></figure><h3 id="1d1eba15-4522-4d98-990f-11fa540861a1" class="">Escape character <code>\</code>:</h3><p id="45dc99ce-3728-4e44-9f62-301e8908ee29" class=""><code>\n</code> → newline</p><pre id="434f8d30-78b8-48fa-9875-a67217a5b56e" class="code"><code>x = &#x27;\n&#x27;
+print(len(x))
+
+# Outputs:
+1</code></pre><p id="7b09b8c1-8f75-437f-9166-38e6535b3381" class=""><code>\t</code> → tab</p><p id="61fa1c67-e4fb-436d-82ba-d0d2ea22d2ca" class=""><code>\&#x27;</code> → used to escape being counted as quote (to represent apostrophe)</p><pre id="b3c3a903-916e-44e8-b1aa-42aaf4fe2053" class="code"><code>print(&#x27;India\&#x27;s capital is New Delhi&#x27;)</code></pre><h3 id="e05fcce3-b6cc-4ca4-ae22-20ae84db18d3" class="">Indexing:</h3><figure id="b1467415-7c1a-4a2f-8f5f-d41ff0f727a2" class="image"><a href="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%201.png"><img style="width:1280px" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%201.png"/></a></figure><pre id="7443dcda-d412-4571-8f0b-2904e8e126be" class="code"><code>word = &#x27;world&#x27;
+print(word[1])
+
+# Outputs:
+o
+
+print(word[-1])
+
+# Outputs:
+d</code></pre><figure id="5758be98-984f-4d43-b9cb-210c39d0e297" class="image"><a href="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%202.png"><img style="width:1144px" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%202.png"/></a></figure><h3 id="ef31b9ce-2721-4334-8de2-08d29dd84416" class="">Slicing:</h3><figure id="d613bbe0-b02d-41a5-bebe-c2ce49402a57" class="image"><a href="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%203.png"><img style="width:1776px" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%203.png"/></a></figure><p id="9b8249e5-74e2-4c33-93fc-ebbadba94447" class="">⇒ You may want to automate getting <code>name</code>, <code>branch</code>, <code>year</code>, and <code>college</code> from emails like these → <code>joseph.ml22@bmsce.ac.in</code></p><pre id="293a38c1-38cd-44b0-a762-b7bb70c0d633" class="code"><code>email = &quot;joseph.ml22@bmsce.ac.in&quot;
+name = email[0:6]      # NOTE: It takes indices where the start is inclusive and end is exclusive.
+
+print(name)  # outputs: joseph</code></pre><h3 id="639b9727-d805-47db-8d75-95ff6657d82b" class="">Immutability in Strings:</h3><pre id="81b470a8-b096-4b75-8aec-9465c8ad6c4c" class="code"><code>word = &#x27;some string&#x27;
+word[0] = &#x27;S&#x27;
+
+# puts out TypeError: &#x27;str&#x27; object does not support item assignment</code></pre><p id="477bdb95-fbca-499c-8edf-3ea79062d3b5" class="">Whereas,</p><pre id="f6fafc9c-60c2-45a2-b882-2421847e210b" class="code"><code>word = &#x27;some string&#x27;
+word = &#x27;Some string&#x27;
+
+# This one works!</code></pre><hr id="fc150786-152e-49a8-b20e-577f382c54e1"/><h1 id="cd21965e-4b53-410c-ab4d-853247bf9cd3" class="">Unit 2</h1><h2 id="b534f476-8610-406e-b003-478978c0dcdb" class="">Loops</h2><h3 id="349afbee-92f9-4748-9463-f081acacf842" class=""><code>while</code>:</h3><figure id="cacf2d12-c3f0-4859-a89e-d1c6d4018b5b" class="image"><a href="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%204.png"><img style="width:1776px" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%204.png"/></a></figure><figure id="64257166-7781-49a3-8a4f-6684dabd1239" class="image"><a href="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%205.png"><img style="width:1830px" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%205.png"/></a></figure><h3 id="6ffa668a-6464-4a0e-80b7-3246179520b0" class="">loop keywords</h3><blockquote id="6178f3d1-2b69-4f15-94ff-6c171ef799ec" class=""><strong><code>break</code></strong><strong>: to exit out of a loop without executing any code that comes below it.</strong></blockquote><blockquote id="a2492f96-f214-45da-a2cc-26f3a6173cb8" class=""><strong><code>continue</code></strong><strong>: to move to the next iteration of the loop, skipping whatever code comes below it.</strong></blockquote><h3 id="99cfa6a8-badc-43bf-88fb-5f844f2fe969" class=""><code>while</code> vs <code>for</code>:</h3><ul id="e1c635ec-8b1b-4370-89f7-83ff73404904" class="bulleted-list"><li style="list-style-type:disc"><code>while</code> loops are used in situations where the number of iterations cannot be quantified exactly.</li></ul><ul id="7d2adebb-0e0a-45ac-8b89-2f3d10939361" class="bulleted-list"><li style="list-style-type:disc"><code>for</code> loops are typically used in situations where the number of iterations can be quantified.</li></ul><hr id="20d2dc5a-0caf-4d25-98bd-0450163ba8da"/><h2 id="46136a89-2038-4ca9-8ab0-be8201e3005b" class=""><code>print()</code>: <code>end</code>, <code>sep</code></h2><pre id="3942ff7f-7723-42af-af2a-4d628281ca6e" class="code"><code>n = int(input())
+
+for i in range(1, n):
+    print(i, end = &#x27;,&#x27;)   # without using end, the print statements prints in a newline, consider trying out yourself.
+print(n)</code></pre><pre id="281499b3-1583-47ba-b189-4bd05787659c" class="code"><code>print(&#x27;this&#x27;, &#x27;is&#x27;, &#x27;cool&#x27;, sep = &#x27;,&#x27;)</code></pre><h3 id="9c904c4d-dbfd-4c56-b0f2-0cae631042dc" class=""><code>f</code> string:</h3><pre id="e7dd2275-8562-475b-975b-ccd11fe7c3a5" class="code"><code>x = 3
+for i in range(1, 4):
+    print(f&quot;{x} X {i} \t=\t {x * i}&quot;)
+
+# Outputs:
+3 X 1   =    3
+3 X 2   =    6
+3 X 3   =    9</code></pre><h3 id="53d47f8a-d0b3-4ccf-9df9-4bfaf05b001f" class=""><code>format()</code>:</h3><pre id="77d325be-0f44-45dc-be9b-97e1f3eedfc5" class="code"><code>x = 3
+for i in range(1, 11):
+    print(&#x27;{} X {} \t=\t {}&#x27;.format(x, i, x * i))</code></pre><p id="b314ad3b-1f58-4270-8565-df30315e3129" class="">You can also use <code>format()</code> in the following way:</p><pre id="1514b8e1-4e8f-4cd0-ab32-eadc844d90df" class="code"><code>fruit1 = &#x27;apple&#x27;
+fruit2 = &#x27;banana&#x27;
+print(&#x27;{string1} and {string2} are fruits&#x27;.format(string1 = fruit1, string2 = fruit2))</code></pre><h3 id="02d6ada5-4f86-4231-830a-3331c82f8f2d" class="">format specifiers:</h3><pre id="44ae9487-f7f5-4502-9615-7f90b5a0a807" class="code"><code>pi_approx = 22 / 7
+print(f&#x27;The value of pi is approximately {pi_approx:.2f}&#x27;)</code></pre><pre id="76ed99d5-4451-49d8-9263-fbadeb8e3779" class="code"><code>roll_1, marks_1 = &#x27;ML1001&#x27;, 90.5
+roll_2, marks_2 = &#x27;ML1002&#x27;, 100
+roll_3, marks_3 = &#x27;ML1003&#x27;, 90.15
+print(f&#x27;{roll_1}: {marks_1:10.2f}&#x27;)
+print(f&#x27;{roll_2}: {marks_2:10.2f}&#x27;)
+print(f&#x27;{roll_3}: {marks_3:10.2f}&#x27;)</code></pre><hr id="83c5e2a2-7cc7-452b-936a-6f3aa92ccae2"/><h1 id="aa5df218-e736-4031-a831-96180abe1780" class="">Unit 3</h1><h2 id="e3a8cfb8-a599-4ed5-9f29-90a6381a362c" class="">Functions</h2><figure id="e38e2dcb-5660-48e9-baff-5137f350aa83" class="image"><a href="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%206.png"><img style="width:1520px" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%206.png"/></a></figure><pre id="94f1c5b4-03d0-446b-bb7f-2aa6bff4a74c" class="code"><code># Throws NameError: The Python interpreter executes the code from top to bottom. At line-2, g is a name that the interpreter has never seen before and therefore it throws a NameError
+print(g(3))
+
+def g(x):
+    return x ** 2</code></pre><h3 id="f954ce05-379a-4fd2-91bb-8f690bc85b2b" class="">How does Python interpreter work?</h3><figure id="6f6cba29-4303-4eb1-b90f-146f03758c16" class="image"><a href="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%207.png"><img style="width:1618px" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%207.png"/></a><figcaption>It moves from the local NameSpaces to Global and then to Built-in NameSpace.</figcaption></figure><h3 id="671a113d-8bc4-4f9f-ad3d-3938f496a8b5" class="">DocStrings:</h3><pre id="637e9a56-a4ea-4d65-91b5-8a8a3a3c7c42" class="code"><code>def square(x):
+    &quot;&quot;&quot;Return the square of x.&quot;&quot;&quot;
+    return x ** 2
+
+
+print(square.__doc__)
+# Outputs:
+&#x27;Return the square of x.&#x27;</code></pre><h3 id="616b59c5-938c-43ed-a25d-c2f792273f46" class="">Default arguments:</h3><pre id="81220476-07ac-4abd-a0bf-b2432b03856c" class="code"><code>def distance(x, y, metric = &#x27;manhattan&#x27;):
+    if metric == &#x27;manhattan&#x27;:
+        return abs(x) + abs(y)
+    elif metric == &#x27;euclidean&#x27;:
+        return pow(x ** 2 + y ** 2, 0.5)</code></pre><h3 id="aff9bf82-829b-4c6e-adfc-9adb8ab43dc1" class="">Call by value:</h3><pre id="78e1d570-1270-4811-ba9f-c0a832efb5cb" class="code"><code>def double(x):
+    x = x * 2
+    return x
+
+a = 4
+double(a)</code></pre><hr id="02b40b75-7a82-4d9f-9668-82394fb1f621"/><blockquote id="4a02871b-03c3-4853-8843-dff3d53df974" class=""><strong>Local</strong>: Whenever a variable is assigned a value anywhere within a function, its scope becomes local to that function. In other words, whenever a variable appears on the left side of an assignment statement anywhere within a function, it becomes a local variable.</blockquote><blockquote id="48b68988-f764-4e51-9fdb-2ca816f81c28" class=""><strong>Global</strong>: If a variable is only referenced inside a function and is never assigned a value inside it, it is implicitly treated as a global variable.</blockquote><h3 id="10d8812e-ac26-473c-93e2-1886b1ab80d6" class="">Recursion:</h3><ul id="69b765c7-b29b-4737-9def-67c7dee9ae71" class="bulleted-list"><li style="list-style-type:disc">Base-Case is important for recursion or else the function continues to be executed forever</li></ul><hr id="12e90152-9cdd-4a1a-b67c-a7787b24757d"/><h2 id="2010d830-fabd-4fd3-b20e-16c5ac00d951" class="">Lists</h2><pre id="21d73531-2c63-4d15-a165-e4bb22f0fb37" class="code"><code>list1 = []
+list2 = list()
+
+list1 = list1 + [1]       # This is called List Concatenation
+print(list1)
+list2 = list2.append(1)
+print(list2)</code></pre><p id="1e1cb140-2a59-4eba-a0a7-975845f52b19" class="">The following operations can be performed:</p><ul id="85ca19b4-f2bb-4ef1-bbd6-24e9f26d644f" class="bulleted-list"><li style="list-style-type:disc"><code>sum()</code></li></ul><ul id="a7835534-bbf7-482f-8e69-1dd8bcbd91f1" class="bulleted-list"><li style="list-style-type:disc"><code>min()</code>, <code>max()</code></li></ul><ul id="09adf54c-ad7c-4d41-ad9e-10c23e06a118" class="bulleted-list"><li style="list-style-type:disc"><code>sorted()</code></li></ul><h3 id="0ff46c68-15ee-4c03-8f45-03ffa3cd0f3a" class="">Concept of <code>alias</code>:</h3><pre id="39adabea-5dda-4bae-9cf4-ec7bde7eb668" class="code"><code>list1 = [1, 2, 3]
+list2 = list1
+list2[0] = 100
+
+print(list1)
+print(list2)
+
+# Outputs:
+[100, 2, 3]
+[100, 2, 3]</code></pre><figure id="929a9880-7cd2-4209-b151-07f4efa3a1a8" class="image"><a href="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%208.png"><img style="width:1958px" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%208.png"/></a></figure><h3 id="077469a4-c309-4d5d-9934-b7f61f774548" class=""><code>is</code> keyword:</h3><pre id="dcaa2f82-bb01-4be4-bd86-7db936e7a832" class="code"><code>list1 = [1, 2, 3]
+list2 = [1, 2, 3]
+
+print(list1 == list2)    # Outputs: True
+print(list1 is list2)    # Outputs: False</code></pre><p id="1547b1d0-18b7-4f9d-a9e8-a65c8b086880" class=""><code>==</code> checks for equality of two lists here.</p><blockquote id="6e54cb12-feed-4f14-af81-10bc35130a08" class=""><code>is</code> checks whether the entities point to the same object.</blockquote><h3 id="91db7d20-d1ce-4a94-8254-d8ae23a3ce98" class="">How to do <code>anti-aliasing</code>?</h3><p id="258ab6dd-2cd8-4111-b897-1f82689d4080" class="">Python provides 3 ways to avoid aliasing:</p><pre id="dec2911b-8972-4da1-abbf-6ddd0407fc48" class="code"><code>list1 = [1, 2,  3]
+
+# The three ways to avoid aliasing as follow:
+list2 = list(list1)
+list3 = list1[:]
+list4 = list1.copy()</code></pre><h3 id="f28e6a8f-1942-4970-991e-76cd15ea4efb" class="">Shallow copy and Deep copy for <code>anti-aliasing</code>:</h3><p id="9a4451c0-4ed1-4729-af5d-9e903533fd95" class="">In lists commonly, if we want to avoid aliasing, for example:</p><pre id="31e048a7-7f85-4a1d-a3db-d091c96daa27" class="code"><code>list1 =  [[1, 2, 3], [4, 5, 6]]
+list2 = list1.copy()
+
+list1[0][0] = 100
+
+print(list1)
+print(list2)
+
+# Outputs:
+[[100, 2], [3, 4]]
+[[100, 2], [3, 4]]</code></pre><p id="13ee2238-c522-4c1c-b5eb-b286b5a826e7" class="">Solution for the problem is:</p><pre id="e75daeaa-be3c-47ff-9ca8-5afb0478785a" class="code"><code>from copy import deepcopy
+list1 =  [[1, 2, 3], [4, 5, 6]]
+list2 = deepcopy(list1)         # Makes a clean copy
+
+list1[0][0] = 100
+
+# Outputs:
+[[1, 2], [3, 4]]
+[[100, 2], [3, 4]]</code></pre><h3 id="118d5761-b9a2-4fe5-8480-6e6e92304f91" class=""><code>insert(#index, #value)</code>:</h3><pre id="eed694c1-6d90-4743-a12c-5681b69ff523" class="code"><code>L = [1, 1, 2, 3, 8]
+L.insert(4, 5)
+
+print(L) # Outputs: [1,1,2,3,5,8]</code></pre><h3 id="e37c60d4-2ea1-4a93-9b17-6b669c2233fa" class=""><code>pop(#index)</code>:</h3><p id="f72e1333-4dfb-4938-8f0a-0b010b82b7fd" class="">Default argument of the index = -1, hence if no index is specified it deletes the last element.</p><h3 id="255f8e40-0528-47cf-87cb-fad96338cfa5" class=""><code>reverse()</code>:</h3><p id="22ae9ac0-ec3b-4534-96d3-9a64bc4cf352" class="">reverses a list → <code>list.reverse()</code> </p><ul id="f3b6b7d6-d193-4dda-b9cd-69621d0a5bb6" class="bulleted-list"><li style="list-style-type:disc">NOTE: It does not return a reversed list.</li></ul><h3 id="3161495e-068f-455d-9d6d-978fd3ddb0d3" class=""><code>sort()</code>:</h3><p id="1870ebfa-b9b5-44b4-acaa-586c69766968" class="">Uses non-trivial algorithm to sort a list → <code>list.sort()</code></p><h3 id="cb5ea936-ca80-4eea-bfbb-8525d5a760c3" class=""><code>remove(#value)</code></h3><p id="d1be07d2-6d36-4fe7-8ce0-d5292f9018c7" class="">Removes the first-leftmost occurrence of the element in the list.</p><h3 id="3b344784-ae91-442e-b0b7-690ec62607e9" class=""><code>split(#delimiter)</code>:</h3><p id="f3ef9025-8a53-4e18-93ef-394e5500fb55" class="">Works with string, you can split a string by <code>&quot; &quot;</code> or <code>,</code> or phrase in string and so on. The split values are returned as list.</p><h3 id="de8092f4-da21-416a-8e44-972895a6f4ed" class=""><code>join()</code>:</h3><p id="43cb7322-e1e3-4b59-b707-bbe4f74e07bd" class="">Stitches together the strings in a list.</p><hr id="e05beec8-5205-41ce-aaa8-7e5b2a1b6c29"/><h2 id="6ccb220e-1e8c-4456-9a09-19497b57a532" class="">Tuples</h2><p id="678d9282-b40d-4548-9914-1fbba308852b" class="">Tuple is immutable sequence of values, they resemble very closely with lists. <code>count()</code> and <code>index()</code> are the only methods defined for <code>tuple</code></p><h3 id="754bf6e3-2616-4ced-b5a2-69774e00083c" class="">Mutable objects inside tuples</h3><pre id="2b2e473c-aea6-4237-97bc-4befe5355950" class="code"><code>a_tuple = ([0, 1, 2], [4, 5, 6])
+a_tuple[0][0] = 100</code></pre><blockquote id="9668fe6e-2da7-43d8-b794-6cc229f7f505" class="">Tuples are not mutable but the mutable elements inside it can be!</blockquote><hr id="763d415c-8dd7-4be2-97c7-8ca0552db169"/><h3 id="c61289ca-b8cb-42bd-af6a-3955c72a22fc" class="">Lists and Tuples:</h3><table id="09558d4f-58a2-48cf-9bde-c35db64fd4d6" class="simple-table"><thead class="simple-table-header"><tr id="5310045c-126e-47c7-82d7-e74e78560009"><th id="{mya" class="simple-table-header-color simple-table-header" style="width:349px"><strong>List</strong></th><th id="L=Bv" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Tuple</strong></th></tr></thead><tbody><tr id="83e6da2c-cc30-4aa4-af84-276e755a9a7f"><td id="{mya" class="" style="width:349px">Mutable</td><td id="L=Bv" class="" style="width:349px">Immutable</td></tr><tr id="aaa68852-5924-4070-a469-e5666784edba"><td id="{mya" class="" style="width:349px">L = [1, 2, 3]</td><td id="L=Bv" class="" style="width:349px">T = (1, 2, 3)</td></tr><tr id="4aeaf322-a5fa-40da-8478-8333a688403c"><td id="{mya" class="" style="width:349px">Supports indexing and slicing</td><td id="L=Bv" class="" style="width:349px">Supports indexing and slicing</td></tr><tr id="46f73563-14b7-4015-a65a-3f83d495a39e"><td id="{mya" class="" style="width:349px">Supports item assignment</td><td id="L=Bv" class="" style="width:349px">Doesn&#x27;t support item assignment</td></tr><tr id="e6371806-8c71-4858-9216-393c1d0945da"><td id="{mya" class="" style="width:349px">Supported methods: count, index, append, insert, remove, pop and others</td><td id="L=Bv" class="" style="width:349px">Supported methods: count, index</td></tr><tr id="ef4d3395-d249-4377-9fff-1ab1f08be827"><td id="{mya" class="" style="width:349px">To get a list: list(obj)</td><td id="L=Bv" class="" style="width:349px">To get a tuple: tuple(obj)</td></tr></tbody></table><h3 id="d3e3cca5-3a8a-45a7-9e24-3b0890360032" class="">Packing and Unpacking of Tuples:</h3><pre id="6a83b6d3-570e-4641-8941-8aab9cdb131a" class="code"><code>T = 1, 2, 3      # Packing a tuple
+x, y, z = T      # Unpacking a tuple</code></pre><pre id="769433e8-8a90-4c8b-bedf-1fa619fe6627" class="code"><code>def max_min(a, b):
+    if a &gt; b:
+        return a, b
+    return b, a
+
+x = max_min(1, 2)
+print(x)</code></pre><hr id="9fb3b306-2fb6-4014-a23d-86d478b90529"/><h2 id="09c4ed0e-42f1-4027-b98c-ba3fcdc56453" class="">Dictionaries</h2><p id="2bf3da3a-22ee-43ee-b0cd-39087acc4d28" class="">Python dictionaries are implemented using a data structure called <code>Hash Table</code>. </p><blockquote id="28534013-5090-4e4c-a4e0-fdd5e2c80fdf" class="">Hash function accepts key <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">h</span></span></span></span></span><span>﻿</span></span> and return <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> called <code>hash value</code></blockquote><ul id="db623090-c7c5-4624-ae46-d4b8725a5e18" class="bulleted-list"><li style="list-style-type:disc">Most of the immutable objects are <code>hashable</code></li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3d06a6be-0f5b-4d79-89c2-5f3c7036d78f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">A list cannot be a key in dictionary. Because it won’t be <code>hashable</code></div></figure><h3 id="89f49cf8-3dcc-49f0-a569-0f0e9ff16275" class="">Iterating over a dictionary</h3><ul id="ff54569e-406c-423d-b3e3-234f26355a43" class="bulleted-list"><li style="list-style-type:disc"><code>keys()</code></li></ul><pre id="9811616b-c1b7-43a8-b8a6-69d4c5127cfb" class="code"><code>squares = {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25} 
+
+for key in squares.keys():
+    print(f&#x27;The square of {key} is {squares[key]}&#x27;)</code></pre><p id="85e5c97d-0e06-4ddd-bd9d-5502ae0f00b6" class="">The above can also be implemented without <code>keys()</code> as Python makes it even simpler:</p><pre id="547d7d55-1ffc-45ea-b6fb-2b255077055d" class="code"><code>squares = {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25} 
+
+for key in squares:
+    print(f&#x27;The square of {key} is {squares[key]}&#x27;)</code></pre><p id="b2f8f7b2-50e1-4987-ab42-e8ec8f9f6093" class="">
+</p><p id="4773442b-b2bb-44d7-978d-ac2a72709804" class="">key-value pairs can be iterated using <code>items()</code>:</p><pre id="4d432651-a907-4113-a5ca-90eeba5b6ec3" class="code"><code>squares = {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25}    # key is a number, value is its square
+
+for key, value in squares.items():
+    print(f&#x27;The square of {key} is {value}&#x27;)</code></pre><hr id="cabc2901-4cde-414f-ad03-02439dfd15e4"/><h2 id="bdcc99bf-ca8c-46cb-ba9c-b957aac4dc5f" class="">Sets</h2><p id="b7c94c58-5f66-4f5f-bdb8-cc4e02aacbb3" class="">Set is a collection of <strong>unordered values</strong> with <strong>no duplicate elements. </strong>They are<strong> mutable </strong>entities</p><p id="ca521a7f-18cb-4f19-a63f-ae5801a9aa8d" class="">→ Since set is not a sequence. The following approach returns error:</p><pre id="24a6ca0c-940c-4c7a-b33a-d2adf8cfc320" class="code"><code># Returns error set object is not subscriptable
+some_set = {&#x27;this&#x27;, &#x27;is&#x27;, &#x27;a&#x27;, &#x27;set&#x27;}
+
+print(some_set[0])</code></pre><p id="fc6b5f22-95d6-4516-8f31-a85d20c9ea39" class="">→ But Note you can iterate through sets:</p><pre id="0ef27f88-a5f0-4eae-866d-225becd93d19" class="code"><code>nums = {1, 2, 3, 4, 5}
+
+for num in nums:
+    print(num)</code></pre><h3 id="6f3744d5-8631-4132-a83c-914cc2e64263" class=""><code>add()</code></h3><p id="a80d6964-f9da-4ccd-a3bc-98c4ae109088" class="">→ <code>add()</code> is used to add elements into a set.</p><h3 id="6742190c-fbad-4792-b0eb-d38702a577e0" class="">Subset:</h3><pre id="78e1baca-7dd7-4b5d-b7c8-43ccbff7f28f" class="code"><code>A = {1, 3, 5}
+B = {1, 2, 3, 4, 5}
+
+print(A.issubset(B))    # method-1
+print(A &lt;= B)           # method-2</code></pre><pre id="69d9efab-e50d-48cd-acb6-69e0f089735f" class="code"><code>A = {1, 2, 3}
+B = {1, 2, 3}
+
+print(A &lt;= B)   # method-1: Checks whether A is subset of B
+print(A &lt; B)    # method-2: Checks whether A is proper subset of B</code></pre><h3 id="86224665-b13d-4721-a552-34d0c62c6d48" class="">Superset:</h3><pre id="eca7d308-65ce-4472-a7b6-b6a79ed8b1bf" class="code"><code>A = {1, 3, 5}
+B = {1, 2, 3, 4, 5}
+
+B.issuperset(A)     # method-1
+print(B &gt;= A)       # method-2</code></pre><h3 id="c53f2a65-153a-433b-aca6-b8f896d6d4c5" class="">Union:</h3><pre id="05ab61b4-aea5-41f8-8c9e-7cff94143296" class="code"><code>A1, A2, A3, A4 = {1}, {2, 3}, {4, 5, 6}, {7, 8, 9, 10}
+
+B1 = A1.union(A2, A3, A4)   # method-1
+B2 = A1 | A2 | A3 | A4      # method-2</code></pre><h3 id="e162bda5-164c-4b38-ae45-aebe84113401" class="">Intersection:</h3><pre id="2a28faf0-427a-444a-b752-0472808c4b19" class="code"><code>A = {2, 4, 6}
+B = {2, 4}
+
+C1 = A.intersection(B)  # method-1
+C2 = A &amp; B              # method-2</code></pre><h3 id="44afcd8c-edfa-478e-8658-c441a2ca626f" class="">Difference:</h3><pre id="afc9b7d9-db34-4faa-8dc9-33124835bb70" class="code"><code>A = {1, 2, 3, 4}
+B = {2, 4, 5}
+
+C1 = A.difference(B)    # method-1
+C2 = A - B              # method-2</code></pre><h3 id="5deb9f8d-90ea-4e4d-912e-25e423758de0" class=""><code>remove(#value)</code>:</h3><p id="a390020f-71cd-4157-b107-747b0ed70cd6" class="">Just like in lists, <code>remove()</code> method can be used to remove a desired element. If it’s not present inside the set, interpreter throws <code>KeyError</code></p><hr id="e8c7ee2f-4da2-45bb-a49e-832900c4e4a3"/><h1 id="fe8810cf-f41c-469d-ba0e-b8d0e52d2862" class="">Unit 4</h1><h2 id="50018794-48f6-4db6-b3e5-bb24659735fc" class="">File Handling:</h2><ul id="fa570766-6515-4bad-9711-8458f10d085d" class="bulleted-list"><li style="list-style-type:disc">Reading a file:</li></ul><figure id="46dc57e0-9b58-4632-bd6d-71c985474f3f" class="image"><a href="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%209.png"><img style="width:1962px" src="Introduction%20to%20Python%20Programming%2065b304baa6134a869b8592854716ea66/Untitled%209.png"/></a></figure><pre id="49ff9038-0816-46f5-848c-4ebb80a1b425" class="code"><code>f = open(&quot;examples.txt&quot;, &#x27;r&#x27;) # &quot;filename&quot;, &quot;mode&quot;
+for line in f:
+	print(line) # note that print() appends a &#x27;\n&#x27; newline character by default and it can be suppressed with print(.., end = &quot;&quot;) as an extra parameter. 
+f.close()</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7fd538e1-c29c-4b8a-a32f-aaee66b5732e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Assume you are boss. <code>file</code> object is like your Personal Assistant. It takes care of all the tasks related to the file and acts as an intermediary.</div></figure><hr id="5312708c-cec7-4335-a558-ead96272c979"/><ul id="46232c60-2309-4125-9845-158d0cc1dfc2" class="bulleted-list"><li style="list-style-type:disc"><strong><code>read()</code></strong></li></ul><p id="02c84548-eb9f-459a-805d-c62f7c05bc4a" class="">Returns a string that contains entire content of the file</p><pre id="dd44e123-ebfb-40cf-b0da-553d403fedd4" class="code"><code>f = open(&#x27;examples.txt&#x27;, &#x27;r&#x27;)
+content = f.read()
+print(content)
+f.close()</code></pre><hr id="50c70674-f1ea-4e8f-9b31-4fcf1ddcf018"/><ul id="0fd3774e-4a0a-4027-a2da-6b4c8a4aabbe" class="bulleted-list"><li style="list-style-type:disc"><code>readline()</code></li></ul><p id="7238bdc8-1972-44cc-82c5-71dd3e51448a" class="">We know that the line after the last line will be empty string <code>‘’</code> this logic is used to know the <code>EOF</code> (End of File)</p><pre id="5baf94a1-244e-4018-a5be-212e71660951" class="code"><code>f = open(&#x27;examples.txt&#x27;, &#x27;r&#x27;)
+line = f.readline()
+while line != &#x27;&#x27;:
+	print(line, end = &#x27;&#x27;)
+	line = f.readline()
+f.close()</code></pre><hr id="97172ba7-0fd6-404c-bcf1-2e395e7ac776"/><ul id="1bcec728-a712-419d-9777-90bed8f2aeb5" class="bulleted-list"><li style="list-style-type:disc"><code>readlines()</code></li></ul><p id="b22c0a6d-1516-48e3-a77e-dc8e10b70df6" class="">Returns a list of lines as elements.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6e7097f6-9527-4c46-a92f-6526ff6b3e76"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">When it comes to large files, <code>readline</code> is the best method to use. because it reads one line at a time. <code>readlines</code> dumps the entire content of the file into a list of strings as a result it occupies <strong>huge memory</strong></div></figure><hr id="c101aa79-0ce0-4512-b677-b3e53f44352f"/><ul id="28addc51-09f2-4a30-a5b1-b36c3408cf86" class="bulleted-list"><li style="list-style-type:disc"><code>write()</code></li></ul><pre id="e792243f-5d94-4d9c-bf2e-e1defc962d8d" class="code"><code>f = open(&#x27;writing.txt&#x27;, &#x27;w&#x27;)
+lines = [&#x27;one&#x27;, &#x27;two&#x27;, &#x27;three&#x27;, &#x27;four&#x27;, &#x27;five&#x27;]
+for line in lines:
+	f.write(line + &#x27;\n&#x27;)
+f.close()</code></pre><hr id="b9052ded-03ad-4286-a408-8b5b4f99be2f"/><ul id="35818ae4-3f7d-41b8-afa5-b69a17675213" class="bulleted-list"><li style="list-style-type:disc"><code>writelines()</code></li></ul><p id="dccee0f2-7e80-400c-a676-de488e90ef2e" class="">List of lines can be written using this method.</p><hr id="0cda86bd-f029-4add-8622-843c0f8f75c9"/><h2 id="a46641d4-f1fa-49d9-8b05-b25c8463a358" class="">Object Oriented Programming:</h2><p id="7d8a65f3-2743-4336-8c05-fad60ee23ee2" class="">A good example to understand would be ‘google forms’. Templates are distributed and each one submits their own form. </p><p id="03911e01-8eaa-4db5-bcc0-da47eaeed4af" class="">Template is similar to <code>class</code> in OOP. Copy of each submission is similar to <code>object</code></p><blockquote id="a30e1aab-ac50-4d08-a12b-90fe262c14b2" class=""><code>class</code> is a blueprint used to create <code>objects</code></blockquote><pre id="2359337e-9014-455c-8404-f77e637a33d4" class="code"><code>class Student:
+	count = 0
+	def __init__(self, name, marks):
+    self.name = name
+		self.marks = marks
+		Student.count += 1
+
+	def print_details(self):
+    print(f&#x27;{self.name}:{self.marks}&#x27;)</code></pre><ul id="91fd91d5-ca27-4748-8a38-dfe18c86b92c" class="bulleted-list"><li style="list-style-type:disc">Objects are created from the class like this:</li></ul><pre id="5a42ee14-51cf-4495-8bb1-13054be81355" class="code"><code>anish = Student(&#x27;Anish&#x27;, 90)
+lakshmi = Student(&#x27;Lakshmi&#x27;, 95)</code></pre><h3 id="581ac20d-45f0-40f0-bf38-6cb3f0f5601a" class="">What is <code>self</code>?</h3><p id="39c602c2-2fe5-48a8-af16-fd8d75cfd192" class="">Say, you want to call for example:</p><pre id="0fa2602b-7d80-4817-afda-5baff6512993" class="code"><code>lakshmi.print_details()</code></pre><p id="5f57a004-6222-4d75-ad44-f3214168531c" class="">Python invokes it as → <code>Student.print_details(lakshmi)</code></p><blockquote id="bba4b15e-883d-4397-9963-55d5e7cbc165" class=""><code>self</code> points to the current object (object attribute) whereas <code>Student.count</code> points to the class (class attribute)</blockquote><ul id="da38f0fc-be2b-45a8-9c9c-52ca6223f219" class="bulleted-list"><li style="list-style-type:disc"><code>self.name = name</code> is the following operation: assign the value of the argument <code>name</code> to the current object&#x27;s attribute!</li></ul><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b5b486ce-0512-4f3d-a7ff-59ef83fe9f8d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Class attributes cannot be updated by objects.</div></figure><h2 id="a2db4ca4-c5a5-442c-be60-702b913db40a" class="">Inheritance</h2><p id="9a9af738-ab3a-4287-9d66-ff31520a3844" class="">Good example to consider is Questions, they come in variety of forms like MCQs, NAT, so on..</p><ul id="b18495a1-71f0-4d19-910e-629a2e63e2c6" class="bulleted-list"><li style="list-style-type:disc">A parent class <code>Question</code> can be made to inherit:</li></ul><pre id="3a21153e-82a8-49b9-8478-72f755a7fd99" class="code"><code>class Question:
+    def __init__(self, statement, marks):
+        self.statement = statement
+        self.marks = marks
+
+    def print_question(self):
+        print(self.statement)
+
+    def update_marks(self, marks):
+        self.marks = marks</code></pre><p id="ee6f324e-ab31-4ed7-8ed3-1bb3deaea087" class="">Inherited in the following way:</p><pre id="1f45259b-bf61-4b5f-861a-5388702ee349" class="code"><code>class NAT(Question):
+    def __init__(self, statement, marks, answer):
+        super().__init__(statement, marks)
+        self.answer = answer
+
+    def update_answer(self, answer):
+        self.answer = answer</code></pre><h3 id="2745fc00-b612-4cd7-92f9-3cb61613a2b8" class="">Method Overriding:</h3><p id="b5ae2e54-4a34-472b-99ef-d7f7193b06df" class="">Let’s say, if you want to print question with list of options, you have to define your own method that overrides parent class. For example:</p><pre id="777cf5d2-0ddb-4359-a4f7-16f499bc77bc" class="code"><code>class MCQ(Question):
+    def __init__(self, statement, marks, ops, c_ops):
+        super().__init__(statement, marks)
+        self.ops = ops      # list of all options
+        self.c_ops = c_ops  # list of correct options
+    
+    def print_question(self):
+        super().print_question()
+        # Assume there are only four options
+        op_index = [&#x27;(a)&#x27;, &#x27;(b)&#x27;, &#x27;(c)&#x27;, &#x27;(d)&#x27;]
+        for i in range(4):
+            print(op_index[i], self.ops[i])</code></pre><hr id="f44bed26-26d3-4a09-a0f4-492c8a1d1cb0"/><h1 id="dbdf394f-ec61-4073-be58-dd4634eba192" class="">Unit 5</h1><h2 id="6153bf91-d0a9-4ac4-9c0c-a28730ba6a59" class="">Regular expressions:</h2><p id="518246b4-473c-42d6-b5e7-4fc1c91c4397" class="">→ Used to locate a chunk of a text in a string by matching up the patterns against the characters in the string.</p><table id="94ce94a6-9c62-456a-916b-07e1908dfab9" class="simple-table"><thead class="simple-table-header"><tr id="25564360-1920-40e0-b2da-10103a5bee0e"><th id="~MGJ" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Character</strong></th><th id="gOW_" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Info</strong></th></tr></thead><tbody><tr id="8636641e-7511-4477-84cf-f7f05d086e08"><td id="~MGJ" class="" style="width:349px">[]</td><td id="gOW_" class="" style="width:349px">A set of characters are written inside that you wish to match, it’s called <strong>Character set</strong></td></tr><tr id="8b409167-c3ca-4fc6-85c9-7328fe8944d0"><td id="~MGJ" class="" style="width:349px">[abc]</td><td id="gOW_" class="" style="width:349px">Matches a or b or c</td></tr><tr id="8643c274-abc6-4587-ab10-9c6059f83a84"><td id="~MGJ" class="" style="width:349px">[^abc]</td><td id="gOW_" class="" style="width:349px">Anything except a, b and c</td></tr><tr id="166d10a8-5999-4d2a-a073-2c29243cd3a2"><td id="~MGJ" class="" style="width:349px">[^a-z]</td><td id="gOW_" class="" style="width:349px">Anything except lowercase letters</td></tr><tr id="21fff74e-f186-49b2-97ef-ae2b2812bbb5"><td id="~MGJ" class="" style="width:349px">a[a-z]c</td><td id="gOW_" class="" style="width:349px">Matches a followed by a lowercase letter followed by c</td></tr><tr id="2234505f-877c-451c-b0e7-8244dedd833c"><td id="~MGJ" class="" style="width:349px">.</td><td id="gOW_" class="" style="width:349px">dot matches any single character, for example: .i matches hi, bi but not → in, it and so on</td></tr><tr id="e3e53a6d-43a4-4a2b-90a4-63c0ae5f12e6"><td id="~MGJ" class="" style="width:349px">^abc</td><td id="gOW_" class="" style="width:349px">Matches abc present at beginning of a string</td></tr><tr id="345fbd50-ff9d-485b-83a8-417bbf8bf751"><td id="~MGJ" class="" style="width:349px">abc$</td><td id="gOW_" class="" style="width:349px">Matches abc present at end of a string</td></tr><tr id="3073f6dd-edd1-468a-a9eb-52fb242d8802"><td id="~MGJ" class="" style="width:349px">*</td><td id="gOW_" class="" style="width:349px">Matches zero or more occurrence. For example: ab*c matches ac, abc, abbc and so on</td></tr><tr id="35aaba08-8d90-45c4-ab76-16fa2e281c68"><td id="~MGJ" class="" style="width:349px">+</td><td id="gOW_" class="" style="width:349px">Matches one or more occurrence like abc, abbc and so on</td></tr><tr id="57b483c7-9bb1-4109-acfb-17e4d9280701"><td id="~MGJ" class="" style="width:349px">?</td><td id="gOW_" class="" style="width:349px">Matches zero or one occurrence </td></tr><tr id="deab7f5b-4a2f-485c-8d6a-3489423c4151"><td id="~MGJ" class="" style="width:349px">|</td><td id="gOW_" class="" style="width:349px">To use as OR between patterns</td></tr><tr id="9f66d2a6-d89b-42f9-85d4-d12ecfecaf14"><td id="~MGJ" class="" style="width:349px">{}</td><td id="gOW_" class="" style="width:349px">Used to specify fixed number of occurrences. ab{1}c matches abc but not abbc. While ab{1, 3}c matches abc, abbc, abbbc but not abbbbc.</td></tr><tr id="6fe6bc71-95a9-415c-92fc-def7045d1f12"><td id="~MGJ" class="" style="width:349px">()</td><td id="gOW_" class="" style="width:349px">Capture and group</td></tr><tr id="305d468c-00e2-4376-982c-d712cb275896"><td id="~MGJ" class="" style="width:349px">\A</td><td id="gOW_" class="" style="width:349px">\Ahe matches “he can do it” but not “the” or “How is he”</td></tr><tr id="198f624c-0d44-4104-b903-116d3ee386ad"><td id="~MGJ" class="" style="width:349px">\b</td><td id="gOW_" class="" style="width:349px">\bfoo matches “football” and foo/b matches “the foo”</td></tr><tr id="d1b24db0-51b2-440f-9941-90c3fde83389"><td id="~MGJ" class="" style="width:349px">\B</td><td id="gOW_" class="" style="width:349px">\Bfoo matches “football” and not “Afootball”. foo\B matches “the football” and not “the foo”</td></tr><tr id="19cc9753-6003-47d1-8785-22a97bb49fdd"><td id="~MGJ" class="" style="width:349px">\d</td><td id="gOW_" class="" style="width:349px">Matches 0-9 digits</td></tr><tr id="c1dc8a6c-3190-4f6c-9e43-490ccbd805df"><td id="~MGJ" class="" style="width:349px">\D</td><td id="gOW_" class="" style="width:349px">Matches any non-digit character in a string</td></tr><tr id="7c07badf-a2fc-4a85-a7a8-b4fd0f5ad754"><td id="~MGJ" class="" style="width:349px">\s</td><td id="gOW_" class="" style="width:349px">Matches whitespace characters like \n, \t, \f</td></tr><tr id="881c2f69-b9b2-44e4-9989-1bedcd79d9a0"><td id="~MGJ" class="" style="width:349px">\S</td><td id="gOW_" class="" style="width:349px">Matches if doesn’t contain whitespace character ~ [^\n\t\f]</td></tr><tr id="7b36b5e8-3ff0-4bba-8439-768f5f199f96"><td id="~MGJ" class="" style="width:349px">\w</td><td id="gOW_" class="" style="width:349px">Matches if a string contains any word characters ~ [a-zA-Z0-9]</td></tr><tr id="4ef5945c-6b3c-4a07-99f5-0e63e11730d8"><td id="~MGJ" class="" style="width:349px">\W</td><td id="gOW_" class="" style="width:349px">Matches if a string doesn’t contain any word ~ [^a-zA-Z0-9]</td></tr><tr id="f7895864-4344-4c44-bbfc-b61e0fdcfd37"><td id="~MGJ" class="" style="width:349px">\Z</td><td id="gOW_" class="" style="width:349px">Hello\Z matches “Hi, Hello” but not “Hello, Hi”</td></tr></tbody></table><h3 id="4c7fd13b-d15a-45d1-87d4-9e937ce6ede7" class=""><code>re.compile()</code>:</h3><p id="b0f07241-f6d8-4d78-a54d-4d39133d0a92" class="">→ Returns regular expression Python object which is more efficient way to have a pattern which is reusable. You need not define over and over again.</p><p id="b9786f3a-423d-455c-bb05-36be1d6614de" class="">→ Used with methods like <code>match()</code>, <code>search()</code>, <code>sub()</code>, <code>findall()</code></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c37b0282-33ec-49b6-8fd1-1cbabfb72621"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code>match()</code> searches for pattern only at beginning of string. While <code>search()</code> checks for pattern anywhere in the string.</div></figure><h3 id="4af7c836-8620-4f2a-ae3e-e5b99885ab55" class=""><code>span()</code>:</h3><p id="cb0ce900-af19-43f0-8645-28b5f5892283" class="">→ Returns a tuple with string index where the pattern has started match to ending.</p><h3 id="f009853a-e5b7-4ad8-8a76-5e53c1282b58" class="">Modifier flags:</h3><table id="910e8108-aacd-45fc-b8e2-503543bf8bd8" class="simple-table"><thead class="simple-table-header"><tr id="a52c4d5b-5be9-49c5-934b-793b25f7235a"><th id="h[Ob" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Flag value</strong></th><th id="Ra\G" class="simple-table-header-color simple-table-header" style="width:349px"><strong>Description</strong></th></tr></thead><tbody><tr id="389bde55-8b3c-4c25-809f-d33e88b2eb67"><td id="h[Ob" class="" style="width:349px">re.I</td><td id="Ra\G" class="" style="width:349px">Ignores case-sensitivity while matching</td></tr><tr id="b0c90d1a-8682-4d6d-b43b-32c3b9403fef"><td id="h[Ob" class="" style="width:349px">re.U</td><td id="Ra\G" class="" style="width:349px">Interpret characters as Unicode character set</td></tr><tr id="60280b7f-d46f-43bd-9121-4513ddbc78eb"><td id="h[Ob" class="" style="width:349px">re.X</td><td id="Ra\G" class="" style="width:349px">Ignores whitespaces</td></tr></tbody></table><hr id="434babd4-26ab-46de-9c16-ac391d241c4b"/><p id="d4f11bfd-4493-4ad1-bc5d-23a26aff0bc8" class="">
+</p></div></article></body></html>
