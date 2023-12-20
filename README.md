@@ -1,6 +1,6 @@
-# Python4BMSCE
+# OpenPythonBook
 
-Welcome to the BMSCE Python Resource repository! This resource is designed to support students at BMS College of Engineering in their journey to learn and use Python effectively. Whether you're a beginner or an experienced Python developer, this resource has something for you.
+Welcome to the Python Resource repository! This resource is designed to support students at BMS College of Engineering in their journey to learn and use Python effectively. Whether you're a beginner or an experienced Python developer, this resource has something for you.
 
 ### Prerequisites
 
